@@ -19,4 +19,10 @@ $$ which is called total time on test. Thus, the hybrid censored data from expon
 
 ## Dicussion of $\hat{\theta}$
 
-> Lemma 2.1 [@chen1987] The conditional mgf of $\hat{\theta}$, $\phi$
+> Lemma 2.1 [@chen1987] The conditional mgf of $\hat{\theta}$, $\phi_{\hat{\theta}}(w)$ is 
+
+$$
+\begin{align}
+\phi_{\hat{\theta}}(w) &=(1-q^n)^{-1}\bigg(\sum_{}\bigg)
+\end{align}
+$$
