@@ -1,0 +1,22 @@
+---
+title: "Exact"
+format: html
+bibliography: references.bib
+---
+
+The reading before reminds us the exact confidence bounds in hybrid censoring [@chen1987] , maybe we can compare the conditional variance here. Here we also include the discussion on [@balakrishnan2013].
+
+## Introduction
+
+Denote $D^*$ and $D$, the numbers of units that would fail before $T^*$ and $T$, respectively, and set
+
+$$
+\begin{align}
+S&=\sum_{i=1}^{D^*}X_{i,n}+(n-D^*)T^* \quad &D^* >1 \\
+&=nT & D^*=0
+\end{align}
+$$ which is called total time on test. Thus, the hybrid censored data from exponential distribution.
+
+## Dicussion of $\hat{\theta}$
+
+> Lemma 2.1 [@chen1987] The conditional mgf of $\hat{\theta}$, $\phi$
