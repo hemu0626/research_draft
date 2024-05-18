@@ -8,7 +8,7 @@ header-includes:
 format: 
   beamer:
     aspectratio: 43
-    theme: Metropolis
+    theme: metropolis
     navigation: vertical 
     colortheme: moloch
     background-image: xpbackground.png
