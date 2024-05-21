@@ -10,9 +10,15 @@ format:
     toc: True
     slide_level: 1
     aspectratio: 43
+<<<<<<< HEAD
     theme: Berlin
     navigation: horizontal 
     colortheme: dolphin
+=======
+    theme: metropolis
+    navigation: vertical 
+    colortheme: moloch
+>>>>>>> 71fdff4261d5870b99903af2d6279381f5c04ca7
     background-image: xpbackground.png
     latex-min-runs: 2
 
