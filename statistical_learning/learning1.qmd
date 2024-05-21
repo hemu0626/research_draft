@@ -4,14 +4,17 @@ pdf-engine: pdflatex
 author: "Mu He"
 institute: Xi'an Jiaotong-Liverpool University
 header-includes: 
-  - \titlegraphic{\vspace{4cm}\flushright\includegraphics[width = 3cm]{xjtluicon.jpg}}
+  - \titlegraphic{\includegraphics[width = 3cm]{xjtluicon.jpg}}
 format: 
   beamer:
+    toc: True
+    slide_level: 1
     aspectratio: 43
-    theme: Metropolis
-    navigation: vertical 
-    colortheme: moloch
+    theme: Berlin
+    navigation: horizontal 
+    colortheme: dolphin
     background-image: xpbackground.png
+    latex-min-runs: 2
 
 bibliography: references.bib
 csl: the-annals-of-statistics.csl
@@ -67,7 +70,13 @@ In statistics, we draw a sample to make inference of the population, then, if we
 
 $$
 \{\Omega,\Sigma,P\}
-$$ where $\Omega$ is the sample space,
+$$ 
+
+where $\Omega$ is the sample space.
+
+##  Convergence of Sequence
+
+### Sequence of Random Variables
 
 $$
 \Omega=\{\omega_1,\omega_2,\cdots, \omega_n\}, \quad w_i \text{ are simple(single) events}
