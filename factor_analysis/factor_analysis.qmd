@@ -1,0 +1,157 @@
+---
+title: "Basic Probabilities, Sampling Distribution"
+pdf-engine: pdflatex
+author: "Mu He"
+format: 
+  beamer:
+    toc: True
+    slide_level: 1
+    aspectratio: 43
+    theme: Berlin
+    #navigation: horizontal 
+    #colortheme: dolphin
+    #theme: metropolis
+    #navigation: vertical 
+    #colortheme: moloch
+    #background-image: xpbackground.png
+    latex-min-runs: 2
+---
+
+# Factor Analysis Model
+
+## Definition
+
+> The model describes a set of $p$ observations for each of $n$ individuals using $k$ common factors ($f_{i,j}$), where the number of factors is less than the number of observations ($k < p$). Each individual has $k$ common factors, and these factors are related to the observations through a factor loading matrix ($L \in \mathbb{R}^{p \times k}$).
+
+## Mathematical Representation
+
+$$
+x_{i,m} - \mu_i = l_{i,1} f_{1,m} + \dots + l_{i,k} f_{k,m} + \varepsilon_{i,m}
+$$
+
+where:
+
+- $x_{i,m}$: Value of the $i$-th observation of the $m$-th individual.
+- $\mu_i$: Mean of the $i$-th observation.
+- $l_{i,j}$: Loading for the $i$-th observation of the $j$-th factor.
+- $f_{j,m}$: Value of the $j$-th factor for the $m$-th individual.
+- $\varepsilon_{i,m}$: Unobserved stochastic error term with mean zero and finite variance.
+
+---
+
+## Matrix Notation
+
+$$
+X - M = L F + \varepsilon
+$$
+
+where:
+
+- $X \in \mathbb{R}^{p \times n}$: Observation matrix.
+- $L \in \mathbb{R}^{p \times k}$: Loading matrix.
+- $F \in \mathbb{R}^{k \times n}$: Factor matrix.
+- $\varepsilon \in \mathbb{R}^{p \times n}$: Error term matrix.
+- $M \in \mathbb{R}^{p \times n}$: Mean matrix with elements $M_{i,m} = \mu_i$.
+
+## Assumptions on $F$
+
+1. $F$ and $\varepsilon$ are independent.
+2. $\mathrm{E}(F) = 0$, where $\mathrm{E}$ denotes the expectation.
+3. $\mathrm{Cov}(F) = I$, ensuring that the factors are uncorrelated, where $I$ is the identity matrix.
+
+---
+
+## Covariance Structure
+
+If $\mathrm{Cov}(X - M) = \Sigma$, then:
+
+$$
+\Sigma = \mathrm{Cov}(X - M) = \mathrm{Cov}(LF + \varepsilon)
+$$
+
+Using the properties of covariance and the assumptions on $F$:
+
+$$
+\Sigma = L \mathrm{Cov}(F) L^T + \mathrm{Cov}(\varepsilon)
+$$
+
+Given $\mathrm{Cov}(F) = I$ and setting $\Psi = \mathrm{Cov}(\varepsilon)$:
+
+$$
+\Sigma = LL^T + \Psi
+$$
+
+---
+
+## Orthogonal Transformation
+
+For any orthogonal matrix $Q$:
+
+- If we set $L' = LQ$ and $F' = Q^T F$, the criteria for being factors and factor loadings still hold.
+- Therefore, a set of factors and factor loadings is unique only up to an orthogonal transformation.
+
+---
+
+# Detailed Explanation of $L$ and $F$
+
+## Loading Matrix ($L$)
+
+- The loading matrix $L$ contains the coefficients (loadings) that relate each observed variable to the underlying factors.
+- Each element $l_{i,j}$ in $L$ represents the contribution of the $j$-th factor to the $i$-th observed variable.
+- High loadings indicate a strong relationship between the observed variable and the factor.
+
+## Factor Matrix ($F$)
+
+- The factor matrix $F$ contains the scores for each factor for each individual.
+- Each element $f_{j,m}$ in $F$ represents the score of the $j$-th factor for the $m$-th individual.
+- The factors are assumed to be uncorrelated and have a mean of zero.
+
+---
+
+## Example Data
+
+Let's consider a small dataset of student performance with three observed variables: test scores, attendance, and participation.
+
+```{r}
+# Load necessary libraries
+library(psych)
+
+# Example data: Student performance
+data <- data.frame(
+  test_scores = c(85, 90, 78, 92, 88, 76, 95, 89, 84, 91),
+  attendance = c(95, 98, 85, 99, 96, 80, 100, 97, 93, 99),
+  participation = c(80, 85, 70, 90, 88, 65, 95, 85, 78, 92)
+)
+
+# Print the data
+print(data)
+```
+
+## Example Data
+\tiny
+```{r}
+# Perform factor analysis
+fa_result <- fa(data, nfactors = 2, rotate = "varimax")
+# Print factor analysis results
+print(fa_result)
+```
+
+## Loading Matrix ($L$)
+
+The loading matrix ($L$) shows the relationship between the observed variables and the underlying factors.
+\tiny
+```{r}
+# Extract and print the loading matrix
+loading_matrix <- fa_result$loadings
+print(loading_matrix)
+```
+
+## Factor Matrix ($F$)
+
+The factor matrix ($F$) contains the scores for each factor for each individual.
+\tiny
+```{r}
+# Extract and print the factor scores
+factor_scores <- fa_result$scores
+print(factor_scores)
+```
